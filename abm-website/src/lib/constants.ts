@@ -1,0 +1,126 @@
+import type { Category } from "@/types";
+
+export const SITE_NAME = "ABM Kuwait";
+export const SITE_DESCRIPTION =
+  "Kuwait's premier office equipment partner. Authorized Brother dealer supplying printers, scanners, inks, labels, shredders, safes and more.";
+
+export const BRAND_INFO = {
+  name: "ABM Kuwait",
+  tagline: "Your Office Equipment Partner",
+  phone1: "69008879",
+  phone2: "22288194",
+  workshopPhone: "69008821",
+  whatsapp: "96569008879",
+  adminAddress: "Al-Qibla, Ali Al-Salem Street, Al-Jawhra Tower, Floor 21",
+  workshopAddress: "Kuwait Free Zone, Al-Arjan Complex, Gate 2",
+  hours: "Sunday – Thursday: 8:30 AM – 4:30 PM",
+  workshopHours: "Sunday – Thursday: 7:30 AM – 3:00 PM",
+  email: "info@abm-kuwait.com",
+};
+
+export const CATEGORIES: Category[] = [
+  {
+    id: "1",
+    name: "Printers & MFP",
+    slug: "printers-mfp",
+    description: "Multifunction inkjet and laser printers for every office need",
+    icon: "Printer",
+    image: "/products/mfc-t930dw.jpg",
+  },
+  {
+    id: "2",
+    name: "Label Printers",
+    slug: "label-printers",
+    description: "Professional label printers for barcodes, tags and identification",
+    icon: "Tag",
+    image: "/products/ql820nwb.jpg",
+  },
+  {
+    id: "3",
+    name: "Inks & Toners",
+    slug: "inks-toners",
+    description: "Genuine ink tanks, ink bottles and toner cartridges",
+    icon: "Droplet",
+    image: "/products/btd60bk.jpg",
+  },
+  {
+    id: "4",
+    name: "Labels & Tapes",
+    slug: "labels-tapes",
+    description: "DK rolls, TZe tapes and adhesive label media",
+    icon: "BookMarked",
+    image: "/products/dk-22205.png",
+  },
+  {
+    id: "5",
+    name: "Copiers",
+    slug: "copiers",
+    description: "High-speed document copiers for offices",
+    icon: "Copy",
+    image: "/products/cat-copiers.png",
+  },
+  {
+    id: "6",
+    name: "Scanners",
+    slug: "scanners",
+    description: "High-resolution document and photo scanners",
+    icon: "ScanLine",
+    image: "/products/ads1300.jpg",
+  },
+  {
+    id: "7",
+    name: "Projectors",
+    slug: "projectors",
+    description: "Business and classroom projectors",
+    icon: "Projector",
+    image: "/products/cat-projectors.png",
+  },
+  {
+    id: "8",
+    name: "Screens",
+    slug: "screens",
+    description: "Display screens and monitors",
+    icon: "Monitor",
+    image: "/products/cat-monitors.png",
+  },
+  {
+    id: "9",
+    name: "Interactive Screens",
+    slug: "interactive-screens",
+    description: "Touch-enabled interactive display panels",
+    icon: "MonitorSmartphone",
+    image: "/products/cat-interactive.png",
+  },
+  {
+    id: "10",
+    name: "Shredders",
+    slug: "shredders",
+    description: "Micro-cut and cross-cut paper shredders",
+    icon: "Scissors",
+    image: "/products/jinpex-shredder.jpg",
+  },
+  {
+    id: "11",
+    name: "Time Recorders",
+    slug: "time-recorders",
+    description: "Attendance and time recording machines",
+    icon: "Clock",
+    image: "/products/cat-time.jpg",
+  },
+  {
+    id: "12",
+    name: "Safes & Filing",
+    slug: "safes-filing",
+    description: "Fire-resistant safes and file storage cabinets",
+    icon: "Lock",
+    image: "/products/diplomat-200ehk.png",
+  },
+  {
+    id: "13",
+    name: "Accessories",
+    slug: "accessories",
+    description: "Cables, adapters and office equipment accessories",
+    icon: "Package",
+    image: "/products/nc-9000w.jpg",
+  },
+];
