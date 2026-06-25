@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { AnimateIn, StaggerGroup } from "@/components/ui/animate-in";
 import { FloatingProducts } from "@/components/ui/floating-products";
+import { HeroBackground } from "@/components/ui/hero-background";
 import { ProductCard } from "@/components/shop/product-card";
 import { CATEGORIES } from "@/lib/constants";
 import { getFeaturedProducts, getNewArrivals, getProductsByCategory } from "@/lib/mock-data";
@@ -46,26 +47,19 @@ export default function HomePage() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen bg-slate-950 flex flex-col items-center justify-center overflow-hidden">
-        {/* Background grid */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
+        {/* Particle field, aurora bands, film grain */}
+        <HeroBackground />
 
         {/* Floating product images */}
         <FloatingProducts />
 
-        {/* Radial glow */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {/* Central radial glow — sits above particles, below content */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 4 }}>
           <div
             className="w-[900px] h-[600px] rounded-full"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(37,99,235,0.15) 0%, transparent 70%)",
+                "radial-gradient(ellipse at center, rgba(37,99,235,0.12) 0%, transparent 70%)",
             }}
           />
         </div>
@@ -202,17 +196,17 @@ export default function HomePage() {
       </section>
 
       {/* ── BEST SELLERS ──────────────────────────────────────────────────── */}
-      <section className="bg-slate-50 py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-5 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
+      <section className="bg-slate-50 py-12 lg:py-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-end justify-between gap-4 mb-6 lg:mb-14 px-5 lg:px-8">
             <div>
               <AnimateIn>
-                <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-3">
+                <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-2 lg:mb-3">
                   Our best
                 </p>
               </AnimateIn>
               <AnimateIn delay={80}>
-                <h2 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+                <h2 className="text-3xl lg:text-5xl font-black text-slate-900 tracking-tight">
                   Best Sellers
                 </h2>
               </AnimateIn>
@@ -220,7 +214,7 @@ export default function HomePage() {
             <AnimateIn delay={120} type="right">
               <Link
                 href="/shop"
-                className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors shrink-0"
               >
                 Browse all
                 <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -228,7 +222,17 @@ export default function HomePage() {
             </AnimateIn>
           </div>
 
-          <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
+          {/* Mobile: horizontal swipe shelf */}
+          <div className="flex sm:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-3 px-5 pb-4">
+            {featured.map((product) => (
+              <div key={product.id} className="snap-start shrink-0 w-[68vw]">
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+
+          {/* Tablet+: grid */}
+          <StaggerGroup className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5 px-5 lg:px-8">
             {featured.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -239,23 +243,43 @@ export default function HomePage() {
 
       {/* ── NEW ARRIVALS ──────────────────────────────────────────────────── */}
       {newArrivals.length > 0 && (
-        <section className="bg-white py-24 lg:py-32">
-          <div className="max-w-7xl mx-auto px-5 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
+        <section className="bg-white py-12 lg:py-32">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-end justify-between gap-4 mb-6 lg:mb-14 px-5 lg:px-8">
               <div>
                 <AnimateIn>
-                  <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-3">
+                  <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-2 lg:mb-3">
                     Just landed
                   </p>
                 </AnimateIn>
                 <AnimateIn delay={80}>
-                  <h2 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+                  <h2 className="text-3xl lg:text-5xl font-black text-slate-900 tracking-tight">
                     New Arrivals
                   </h2>
                 </AnimateIn>
               </div>
+              <AnimateIn delay={120} type="right">
+                <Link
+                  href="/shop"
+                  className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors shrink-0"
+                >
+                  See all
+                  <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
+              </AnimateIn>
             </div>
-            <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
+
+            {/* Mobile: horizontal swipe shelf */}
+            <div className="flex sm:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-3 px-5 pb-4">
+              {newArrivals.map((product) => (
+                <div key={product.id} className="snap-start shrink-0 w-[68vw]">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+
+            {/* Tablet+: grid */}
+            <StaggerGroup className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5 px-5 lg:px-8">
               {newArrivals.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -317,14 +341,12 @@ export default function HomePage() {
           { name: "Lion Steel", img: "/brands/lionSteel.png", href: "/shop/safes-filing" },
           { name: "Clip",       img: "/brands/clip.jpg",      href: "/shop" },
         ];
-        const row1 = [...all,       ...all];
-        const row2 = [...[...all].reverse(), ...[...all].reverse()];
-        const row3 = [...all.slice(3), ...all.slice(3), ...all.slice(3)];
+        const row1 = [...all, ...all];
 
         const Card = ({ name, img, href }: { name: string; img: string; href: string }) => (
           <Link
             href={href}
-            className="group brand-logo-card shrink-0 w-32 h-20 lg:w-40 lg:h-24 mx-2 rounded-2xl border border-white/5 bg-white/3 hover:bg-white/8 hover:border-blue-500/30 flex items-center justify-center overflow-hidden transition-all duration-400 relative"
+            className="group brand-logo-card shrink-0 w-44 h-28 lg:w-56 lg:h-32 mx-3 rounded-2xl border border-white/5 bg-white/3 hover:bg-white/8 hover:border-blue-500/30 flex items-center justify-center overflow-hidden transition-all duration-400 relative"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{ background: "radial-gradient(circle at 50% 50%, rgba(37,99,235,0.18) 0%, transparent 70%)" }}
@@ -332,9 +354,9 @@ export default function HomePage() {
             <Image
               src={img}
               alt={name}
-              width={80}
-              height={48}
-              className="object-contain max-h-10 lg:max-h-12 filter grayscale brightness-[1.8] opacity-50 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+              width={120}
+              height={72}
+              className="object-contain max-h-14 lg:max-h-16 transition-all duration-500 group-hover:scale-110"
             />
           </Link>
         );
@@ -352,24 +374,10 @@ export default function HomePage() {
             <div className="absolute inset-y-0 right-0 w-24 z-10 pointer-events-none"
               style={{ background: "linear-gradient(to left, #020617, transparent)" }} />
 
-            {/* Row 1 — LTR fast */}
-            <div className="brand-row flex overflow-hidden mb-4">
+            {/* Row 1 — LTR */}
+            <div className="brand-row flex overflow-hidden">
               <div className="animate-marquee-ltr-fast flex">
                 {row1.map((b, i) => <Card key={`r1-${i}`} {...b} />)}
-              </div>
-            </div>
-
-            {/* Row 2 — RTL normal */}
-            <div className="brand-row flex overflow-hidden mb-4">
-              <div className="animate-marquee-rtl flex">
-                {row2.map((b, i) => <Card key={`r2-${i}`} {...b} />)}
-              </div>
-            </div>
-
-            {/* Row 3 — LTR slow */}
-            <div className="brand-row flex overflow-hidden">
-              <div className="animate-marquee-ltr-slow flex">
-                {row3.map((b, i) => <Card key={`r3-${i}`} {...b} />)}
               </div>
             </div>
           </section>

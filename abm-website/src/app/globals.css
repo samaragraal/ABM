@@ -77,6 +77,26 @@ body {
   100% { transform: scale(1.5); opacity: 0; }
 }
 
+@keyframes aurora-shift {
+  0%   { opacity: 1; transform: scale(1)    translateX(0px); }
+  50%  { opacity: 0.7; transform: scale(1.08) translateX(30px); }
+  100% { opacity: 1; transform: scale(0.96) translateX(-20px); }
+}
+
+@keyframes grain-shift {
+  0%   { background-position: 0 0; }
+  10%  { background-position: -5% -10%; }
+  20%  { background-position: -15% 5%; }
+  30%  { background-position: 7% -25%; }
+  40%  { background-position: -5% 25%; }
+  50%  { background-position: -15% 10%; }
+  60%  { background-position: 15% 0%; }
+  70%  { background-position: 0% 15%; }
+  80%  { background-position: 3% 35%; }
+  90%  { background-position: -10% 10%; }
+  100% { background-position: 0 0; }
+}
+
 @keyframes float-a {
   0%, 100% { transform: translateY(0px)   rotate(var(--rot, -6deg)); }
   33%       { transform: translateY(-22px) rotate(calc(var(--rot, -6deg) + 4deg)); }
@@ -203,11 +223,11 @@ body {
   from { transform: translateX(-50%); }
   to   { transform: translateX(0); }
 }
-.animate-marquee-ltr        { animation: marquee-ltr 28s linear infinite; will-change: transform; }
-.animate-marquee-ltr-slow   { animation: marquee-ltr 42s linear infinite; will-change: transform; }
-.animate-marquee-ltr-fast   { animation: marquee-ltr 18s linear infinite; will-change: transform; }
-.animate-marquee-rtl        { animation: marquee-rtl 28s linear infinite; will-change: transform; }
-.animate-marquee-rtl-slow   { animation: marquee-rtl 42s linear infinite; will-change: transform; }
+.animate-marquee-ltr        { animation: marquee-ltr 50s linear infinite; will-change: transform; }
+.animate-marquee-ltr-slow   { animation: marquee-ltr 70s linear infinite; will-change: transform; }
+.animate-marquee-ltr-fast   { animation: marquee-ltr 36s linear infinite; will-change: transform; }
+.animate-marquee-rtl        { animation: marquee-rtl 50s linear infinite; will-change: transform; }
+.animate-marquee-rtl-slow   { animation: marquee-rtl 70s linear infinite; will-change: transform; }
 
 .logo-card:hover .animate-marquee-ltr,
 .logo-card:hover .animate-marquee-rtl { animation-play-state: paused; }

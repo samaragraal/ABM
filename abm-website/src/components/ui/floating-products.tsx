@@ -107,7 +107,7 @@ const ITEMS: FloatingItem[] = [
 
 export function FloatingProducts() {
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true" style={{ zIndex: 5 }}>
       {ITEMS.map((item, i) => (
         <div
           key={i}
