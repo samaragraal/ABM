@@ -41,14 +41,14 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20">
           {/* Form */}
           <AnimateIn type="left">
-            <h2 className="text-xl font-bold text-slate-900 mb-6">Send a Message</h2>
+            <h2 className="text-xl font-bold text-white mb-6">Send a Message</h2>
             <ContactForm />
           </AnimateIn>
 
           {/* Info */}
           <div className="space-y-5">
             <AnimateIn type="right">
-              <h2 className="text-xl font-bold text-slate-900 mb-6">Contact Details</h2>
+              <h2 className="text-xl font-bold text-white mb-6">Contact Details</h2>
             </AnimateIn>
 
             {/* WhatsApp */}
@@ -57,22 +57,22 @@ export default function ContactPage() {
                 href={`https://wa.me/${BRAND_INFO.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-5 rounded-2xl border border-green-200 hover:border-green-300 hover:shadow-lg hover:shadow-green-50 bg-white transition-all duration-300"
+                className="group flex items-center gap-4 p-5 rounded-2xl border border-green-500/20 hover:border-green-500/40 bg-green-500/5 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <MessageCircle className="h-6 w-6 text-white" strokeWidth={1.8} />
                 </div>
                 <div>
-                  <p className="font-bold text-slate-900">WhatsApp</p>
-                  <p className="text-sm text-slate-500">Click to start a conversation</p>
+                  <p className="font-bold text-white">WhatsApp</p>
+                  <p className="text-sm text-slate-400">Click to start a conversation</p>
                 </div>
               </a>
             </AnimateIn>
 
             {/* Admin */}
             <AnimateIn type="right" delay={120}>
-              <div className="p-5 rounded-2xl border border-slate-200 bg-white space-y-3 hover:border-slate-300 transition-colors">
-                <p className="font-bold text-slate-900">Administration Office</p>
+              <div className="p-5 rounded-2xl border border-white/[0.07] bg-white/[0.03] space-y-3 hover:border-blue-500/30 transition-colors">
+                <p className="font-bold text-white">Administration Office</p>
                 <div className="space-y-2 text-sm">
                   {[
                     { icon: MapPin, content: BRAND_INFO.adminAddress },
@@ -80,10 +80,10 @@ export default function ContactPage() {
                     { icon: Mail, content: BRAND_INFO.email, href: `mailto:${BRAND_INFO.email}` },
                     { icon: Clock, content: BRAND_INFO.hours },
                   ].map(({ icon: Icon, content, href }) => (
-                    <div key={content} className="flex items-start gap-3 text-slate-600">
-                      <Icon className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" strokeWidth={1.6} />
+                    <div key={content} className="flex items-start gap-3 text-slate-400">
+                      <Icon className="h-4 w-4 text-blue-400 shrink-0 mt-0.5" strokeWidth={1.6} />
                       {href ? (
-                        <a href={href} className="hover:text-blue-600 transition-colors">{content}</a>
+                        <a href={href} className="hover:text-blue-400 transition-colors">{content}</a>
                       ) : (
                         <span>{content}</span>
                       )}
@@ -95,18 +95,18 @@ export default function ContactPage() {
 
             {/* Workshop */}
             <AnimateIn type="right" delay={180}>
-              <div className="p-5 rounded-2xl border border-slate-200 bg-white space-y-3 hover:border-slate-300 transition-colors">
-                <p className="font-bold text-slate-900">Workshop &amp; Maintenance</p>
+              <div className="p-5 rounded-2xl border border-white/[0.07] bg-white/[0.03] space-y-3 hover:border-blue-500/30 transition-colors">
+                <p className="font-bold text-white">Workshop &amp; Maintenance</p>
                 <div className="space-y-2 text-sm">
                   {[
                     { icon: MapPin, content: BRAND_INFO.workshopAddress },
                     { icon: Phone, content: BRAND_INFO.workshopPhone, href: `tel:${BRAND_INFO.workshopPhone}` },
                     { icon: Clock, content: BRAND_INFO.workshopHours },
                   ].map(({ icon: Icon, content, href }) => (
-                    <div key={content} className="flex items-start gap-3 text-slate-600">
-                      <Icon className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" strokeWidth={1.6} />
+                    <div key={content} className="flex items-start gap-3 text-slate-400">
+                      <Icon className="h-4 w-4 text-blue-400 shrink-0 mt-0.5" strokeWidth={1.6} />
                       {href ? (
-                        <a href={href} className="hover:text-blue-600 transition-colors">{content}</a>
+                        <a href={href} className="hover:text-blue-400 transition-colors">{content}</a>
                       ) : (
                         <span>{content}</span>
                       )}

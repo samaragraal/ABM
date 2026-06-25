@@ -70,7 +70,7 @@ export default async function ProductPage({ params }: Props) {
           <AnimateIn type="left">
             <div className="sticky top-24">
               {/* Main image */}
-              <div className="relative aspect-square bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden flex items-center justify-center">
+              <div className="relative aspect-square bg-white/[0.03] rounded-3xl border border-white/[0.07] overflow-hidden flex items-center justify-center">
                 {/* Grid pattern */}
                 <div
                   className="absolute inset-0 opacity-[0.025]"
@@ -101,8 +101,8 @@ export default async function ProductPage({ params }: Props) {
                   />
                 ) : (
                   <div className="relative flex flex-col items-center gap-5">
-                    <div className="w-28 h-28 rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-100 flex items-center justify-center">
-                      <span className="text-5xl font-black text-slate-100">
+                    <div className="w-28 h-28 rounded-3xl bg-white/[0.05] border border-white/[0.08] flex items-center justify-center">
+                      <span className="text-5xl font-black text-slate-600">
                         {product.brand[0]}
                       </span>
                     </div>
@@ -141,7 +141,7 @@ export default async function ProductPage({ params }: Props) {
                   {product.categoryName}
                   <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
-                <h1 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-tight mb-2">
+                <h1 className="text-2xl lg:text-3xl font-black text-white tracking-tight leading-tight mb-2">
                   {product.name}
                 </h1>
                 <p className="text-sm text-slate-400 font-medium">{product.brand}</p>
@@ -155,7 +155,7 @@ export default async function ProductPage({ params }: Props) {
                   <span className="text-xl font-semibold text-slate-400">Price to be announced</span>
                 ) : (
                   <>
-                    <span className="text-4xl font-black text-slate-900 tabular-nums">
+                    <span className="text-4xl font-black text-white tabular-nums">
                       {formatPrice(product.price)}
                     </span>
                     {product.comparePrice && (
@@ -164,7 +164,7 @@ export default async function ProductPage({ params }: Props) {
                       </span>
                     )}
                     {discount && (
-                      <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-red-50 text-red-600">
+                      <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-red-500/10 text-red-400">
                         Save {discount}%
                       </span>
                     )}
@@ -192,7 +192,7 @@ export default async function ProductPage({ params }: Props) {
             <Separator />
 
             <AnimateIn delay={100}>
-              <p className="text-slate-600 leading-relaxed">{product.description}</p>
+              <p className="text-slate-400 leading-relaxed">{product.description}</p>
             </AnimateIn>
 
             <AnimateIn delay={120}>
@@ -214,21 +214,21 @@ export default async function ProductPage({ params }: Props) {
         {product.specs.length > 0 && (
           <div className="mt-20">
             <AnimateIn>
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-6">
+              <h2 className="text-2xl font-black text-white tracking-tight mb-6">
                 Specifications
               </h2>
             </AnimateIn>
 
             <AnimateIn delay={60}>
-              <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <div className="bg-white/[0.03] rounded-2xl border border-white/[0.07] overflow-hidden">
                 <table className="w-full text-sm">
-                  <tbody className="divide-y divide-slate-100">
+                  <tbody className="divide-y divide-white/[0.05]">
                     {product.specs.map((spec, i) => (
-                      <tr key={spec.label} className={i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}>
-                        <td className="px-5 py-3.5 font-semibold text-slate-600 w-2/5 lg:w-1/3">
+                      <tr key={spec.label} className={i % 2 === 0 ? "bg-transparent" : "bg-white/[0.02]"}>
+                        <td className="px-5 py-3.5 font-semibold text-slate-400 w-2/5 lg:w-1/3">
                           {spec.label}
                         </td>
-                        <td className="px-5 py-3.5 text-slate-700">{spec.value}</td>
+                        <td className="px-5 py-3.5 text-slate-300">{spec.value}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -240,13 +240,24 @@ export default async function ProductPage({ params }: Props) {
 
         {/* Related */}
         {related.length > 0 && (
-          <div className="mt-20">
+          <div className="mt-16 lg:mt-20">
             <AnimateIn>
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-8">
+              <h2 className="text-2xl font-black text-white tracking-tight mb-6 lg:mb-8">
                 More in {product.categoryName}
               </h2>
             </AnimateIn>
-            <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
+
+            {/* Mobile: horizontal swipe shelf */}
+            <div className="flex sm:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-3 -mx-5 px-5 pb-4">
+              {related.map((p) => (
+                <div key={p.id} className="snap-start shrink-0 w-[68vw]">
+                  <ProductCard product={p} />
+                </div>
+              ))}
+            </div>
+
+            {/* Tablet+: grid */}
+            <StaggerGroup className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
               {related.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

@@ -45,7 +45,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-white py-20 lg:py-28">
+      <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-5 lg:px-8">
           <StaggerGroup className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
@@ -54,12 +54,12 @@ export default function AboutPage() {
               { icon: Wrench, title: "Workshop Service", desc: "Dedicated maintenance facility at Kuwait Free Zone." },
               { icon: Users, title: "Expert Team", desc: "Knowledgeable staff to guide your purchasing decisions." },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="group p-7 rounded-3xl border border-slate-200 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-50/80 transition-all duration-500">
-                <div className="w-11 h-11 rounded-2xl bg-slate-100 group-hover:bg-blue-100 flex items-center justify-center mb-5 transition-colors duration-300">
-                  <Icon className="h-5 w-5 text-slate-500 group-hover:text-blue-600 transition-colors duration-300" strokeWidth={1.6} />
+              <div key={title} className="group p-7 rounded-3xl border border-white/[0.07] bg-white/[0.03] hover:border-blue-500/30 hover:bg-white/[0.06] transition-all duration-500">
+                <div className="w-11 h-11 rounded-2xl bg-white/[0.06] group-hover:bg-blue-500/20 flex items-center justify-center mb-5 transition-colors duration-300">
+                  <Icon className="h-5 w-5 text-slate-400 group-hover:text-blue-400 transition-colors duration-300" strokeWidth={1.6} />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">{title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
+                <h3 className="font-bold text-white mb-2">{title}</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">{desc}</p>
               </div>
             ))}
           </StaggerGroup>
@@ -67,10 +67,10 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="bg-slate-50 border-y border-slate-100 py-20 lg:py-28">
+      <section className="border-y border-white/[0.06] py-20 lg:py-28 bg-white/[0.02]">
         <div className="max-w-3xl mx-auto px-5 lg:px-8">
           <AnimateIn>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-7">Who We Are</h2>
+            <h2 className="text-3xl font-black text-white tracking-tight mb-7">Who We Are</h2>
           </AnimateIn>
           <div className="space-y-5">
             {[
@@ -79,7 +79,7 @@ export default function AboutPage() {
               "Our dedicated workshop and maintenance facility ensures that every product we sell is backed by professional technical support. Whether you need a single ink cartridge or a complete fleet of office printers, ABM Kuwait is your one-stop shop.",
             ].map((text, i) => (
               <AnimateIn key={i} delay={i * 80}>
-                <p className="text-slate-600 leading-relaxed text-lg">{text}</p>
+                <p className="text-slate-400 leading-relaxed text-lg">{text}</p>
               </AnimateIn>
             ))}
           </div>
@@ -87,10 +87,10 @@ export default function AboutPage() {
       </section>
 
       {/* Locations */}
-      <section className="bg-white py-20 lg:py-28">
+      <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-5 lg:px-8">
           <AnimateIn className="mb-10">
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">Our Locations</h2>
+            <h2 className="text-3xl font-black text-white tracking-tight">Our Locations</h2>
           </AnimateIn>
 
           <StaggerGroup className="grid md:grid-cols-2 gap-5">
@@ -110,27 +110,27 @@ export default function AboutPage() {
                 hours: BRAND_INFO.workshopHours,
               },
             ].map(({ title, icon: Icon, address, phones, hours }) => (
-              <div key={title} className="p-7 rounded-3xl border border-slate-200 hover:border-blue-200 hover:shadow-md transition-all duration-300">
+              <div key={title} className="p-7 rounded-3xl border border-white/[0.07] bg-white/[0.03] hover:border-blue-500/30 transition-all duration-300">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                    <Icon className="h-5 w-5 text-blue-600" strokeWidth={1.6} />
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                    <Icon className="h-5 w-5 text-blue-400" strokeWidth={1.6} />
                   </div>
-                  <h3 className="font-bold text-slate-900">{title}</h3>
+                  <h3 className="font-bold text-white">{title}</h3>
                 </div>
                 <div className="space-y-2.5 text-sm">
-                  <div className="flex items-start gap-2.5 text-slate-600">
+                  <div className="flex items-start gap-2.5 text-slate-400">
                     <MapPin className="h-4 w-4 text-blue-400 shrink-0 mt-0.5" strokeWidth={1.6} />
                     <span>{address}</span>
                   </div>
-                  <div className="flex items-center gap-2.5 text-slate-600">
+                  <div className="flex items-center gap-2.5 text-slate-400">
                     <Phone className="h-4 w-4 text-blue-400 shrink-0" strokeWidth={1.6} />
                     <div className="flex gap-2">
                       {phones.map((phone) => (
-                        <a key={phone} href={`tel:${phone}`} className="hover:text-blue-600 transition-colors">{phone}</a>
+                        <a key={phone} href={`tel:${phone}`} className="hover:text-blue-400 transition-colors">{phone}</a>
                       ))}
                     </div>
                   </div>
-                  <div className="flex items-center gap-2.5 text-slate-600">
+                  <div className="flex items-center gap-2.5 text-slate-400">
                     <Clock className="h-4 w-4 text-blue-400 shrink-0" strokeWidth={1.6} />
                     <span>{hours}</span>
                   </div>

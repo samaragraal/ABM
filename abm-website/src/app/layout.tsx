@@ -5,6 +5,7 @@ import { Providers } from "@/context/providers";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { GlobalGlow } from "@/components/ui/global-glow";
 import { SITE_NAME, SITE_DESCRIPTION, BRAND_INFO } from "@/lib/constants";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
@@ -60,8 +61,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen flex flex-col bg-white antialiased">
+      <body className="min-h-screen flex flex-col bg-slate-950 antialiased">
         <Providers>
+          <GlobalGlow />
           <ScrollProgress />
           <Navbar />
           <main className="flex-1">{children}</main>

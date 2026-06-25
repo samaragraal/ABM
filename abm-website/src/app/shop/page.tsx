@@ -28,27 +28,14 @@ export default function ShopPage() {
   }));
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-slate-950 min-h-screen">
       {/* Hero */}
-      <section className="bg-white border-b border-slate-100 py-16 lg:py-24">
+      <section className="border-b border-white/5 py-10 lg:py-14">
         <div className="max-w-7xl mx-auto px-5 lg:px-8">
           <AnimateIn>
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-3">
-              All products
-            </p>
-          </AnimateIn>
-          <AnimateIn delay={60}>
-            <h1 className="text-4xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-4">
-              Everything for
-              <br />
-              your office.
+            <h1 className="text-3xl lg:text-4xl font-black text-white tracking-tight">
+              All Products
             </h1>
-          </AnimateIn>
-          <AnimateIn delay={120}>
-            <p className="text-slate-500 text-lg max-w-lg">
-              {PRODUCTS.length} products across {CATEGORIES.length} categories.
-              Genuine products, fast Kuwait delivery.
-            </p>
           </AnimateIn>
         </div>
       </section>
@@ -56,7 +43,7 @@ export default function ShopPage() {
       <div className="max-w-7xl mx-auto px-5 lg:px-8 py-14">
         {/* Category quick-links */}
         <AnimateIn className="mb-12">
-          <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-5">
+          <h2 className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-5">
             Browse by category
           </h2>
         </AnimateIn>
@@ -68,9 +55,9 @@ export default function ShopPage() {
               <Link
                 key={cat.slug}
                 href={`/shop/${cat.slug}`}
-                className="category-card group flex flex-col rounded-xl border border-slate-200 hover:border-blue-200 bg-white overflow-hidden"
+                className="category-card group flex flex-col rounded-xl border border-white/[0.07] hover:border-blue-500/30 bg-white/[0.03] hover:bg-white/[0.06] overflow-hidden transition-all duration-300"
               >
-                <div className="relative h-24 bg-slate-50 overflow-hidden">
+                <div className="relative h-24 bg-white/[0.04] overflow-hidden">
                   {cat.image ? (
                     <Image
                       src={cat.image}
@@ -81,15 +68,15 @@ export default function ShopPage() {
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Icon className="h-8 w-8 text-slate-200" strokeWidth={1.2} />
+                      <Icon className="h-8 w-8 text-slate-600" strokeWidth={1.2} />
                     </div>
                   )}
                 </div>
-                <div className="px-2.5 py-2 border-t border-slate-100">
-                  <p className="text-[11px] font-semibold text-slate-700 group-hover:text-blue-700 transition-colors leading-snug">
+                <div className="px-2.5 py-2 border-t border-white/[0.05]">
+                  <p className="text-[11px] font-semibold text-slate-300 group-hover:text-blue-400 transition-colors leading-snug">
                     {cat.name}
                   </p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">{cat.count} items</p>
+                  <p className="text-[10px] text-slate-500 mt-0.5">{cat.count} items</p>
                 </div>
               </Link>
             );
@@ -99,14 +86,14 @@ export default function ShopPage() {
         {/* All products */}
         <div className="flex items-center justify-between mb-6">
           <AnimateIn>
-            <h2 className="text-xl font-bold text-slate-900">All Products</h2>
+            <h2 className="text-xl font-bold text-white">All Products</h2>
           </AnimateIn>
           <AnimateIn type="right">
-            <p className="text-sm text-slate-400">{PRODUCTS.filter(p => !p.isComingSoon).length} items</p>
+            <p className="text-sm text-white/30">{PRODUCTS.filter(p => !p.isComingSoon).length} items</p>
           </AnimateIn>
         </div>
 
-        <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
+        <StaggerGroup className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-5">
           {PRODUCTS.filter((p) => !p.isComingSoon).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
