@@ -22,6 +22,7 @@ import {
   Package,
 } from "lucide-react";
 import { AnimateIn, StaggerGroup } from "@/components/ui/animate-in";
+import { FloatingProducts } from "@/components/ui/floating-products";
 import { ProductCard } from "@/components/shop/product-card";
 import { CATEGORIES } from "@/lib/constants";
 import { getFeaturedProducts, getNewArrivals, getProductsByCategory } from "@/lib/mock-data";
@@ -54,6 +55,9 @@ export default function HomePage() {
             backgroundSize: "80px 80px",
           }}
         />
+
+        {/* Floating product images */}
+        <FloatingProducts />
 
         {/* Radial glow */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
