@@ -22,7 +22,6 @@ import {
   Package,
 } from "lucide-react";
 import { AnimateIn, StaggerGroup } from "@/components/ui/animate-in";
-import { FloatingProducts } from "@/components/ui/floating-products";
 import { HeroBackground } from "@/components/ui/hero-background";
 import { ProductCard } from "@/components/shop/product-card";
 import { CATEGORIES } from "@/lib/constants";
@@ -49,9 +48,6 @@ export default function HomePage() {
       <section className="relative min-h-screen bg-slate-950 flex flex-col items-center justify-center overflow-hidden">
         {/* Particle field, aurora bands, film grain */}
         <HeroBackground />
-
-        {/* Floating product images */}
-        <FloatingProducts />
 
         {/* Central radial glow — sits above particles, below content */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 4 }}>
