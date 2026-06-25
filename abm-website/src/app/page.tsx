@@ -69,14 +69,42 @@ export default function HomePage() {
             style={{ animation: "fade-in 1s cubic-bezier(0.16,1,0.3,1) 0.1s both" }}
           >
             <div className="relative w-32 h-32 lg:w-40 lg:h-40">
-                <Image
-                  src="/logo.png"
-                  alt="ABM Kuwait"
-                  fill
-                  priority
-                  className="object-contain"
-                  style={{ mixBlendMode: "screen" }}
-                />
+              {/* Expanding ring 1 */}
+              <span
+                className="absolute inset-0 rounded-full"
+                style={{
+                  border: "1.5px solid rgba(37,99,235,0.5)",
+                  animation: "logo-ring-pulse 3s ease-out infinite",
+                }}
+              />
+              {/* Expanding ring 2 — offset */}
+              <span
+                className="absolute inset-0 rounded-full"
+                style={{
+                  border: "1.5px solid rgba(99,120,255,0.35)",
+                  animation: "logo-ring-pulse 3s ease-out infinite 1s",
+                }}
+              />
+              {/* Expanding ring 3 — further offset */}
+              <span
+                className="absolute inset-0 rounded-full"
+                style={{
+                  border: "1px solid rgba(139,92,246,0.25)",
+                  animation: "logo-ring-pulse 3s ease-out infinite 2s",
+                }}
+              />
+              {/* Logo with glow pulse */}
+              <Image
+                src="/logo.png"
+                alt="ABM Kuwait"
+                fill
+                priority
+                className="object-contain relative"
+                style={{
+                  mixBlendMode: "screen",
+                  animation: "logo-glow-pulse 3s ease-in-out infinite",
+                }}
+              />
             </div>
           </div>
 
